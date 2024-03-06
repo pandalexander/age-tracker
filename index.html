@@ -29,24 +29,81 @@
           class="flex justify-between items-center mb-5"
           style="border-bottom: 0.5rem solid"
         >
-          <h2 class="">Natalie:</h2>
-          <h2>17</h2>
+          <h2 class="">Dad:</h2>
+          <h2 id="dad-age"></h2>
         </div>
         <div
           class="flex justify-between items-center mb-5"
           style="border-bottom: 0.5rem solid"
         >
-          <h2 class="">Connor:</h2>
-          <h2>17</h2>
+          <h2 class="">Mom:</h2>
+          <h2 id="mom-age"></h2>
         </div>
         <div
           class="flex justify-between items-center mb-5"
           style="border-bottom: 0.5rem solid"
         >
-          <h2 class="">Lauren:</h2>
-          <h2>17</h2>
+          <h2 class="">Jay:</h2>
+          <h2 id="jason-age"></h2>
+        </div>
+        <div
+          class="flex justify-between items-center mb-5"
+          style="border-bottom: 0.5rem solid"
+        >
+          <h2 v-text="static">Nat</h2>
+          <h2 id="natalie-age"></h2>
+        </div>
+        <div
+          class="flex justify-between items-center mb-5"
+          style="border-bottom: 0.5rem solid"
+        >
+          <h2 class="">Con:</h2>
+          <h2 id="connor-age"></h2>
+        </div>
+        <div
+          class="flex justify-between items-center mb-5"
+          style="border-bottom: 0.5rem solid"
+        >
+          <h2 class="">Lefty:</h2>
+          <h2 id="lauren-age"></h2>
         </div>
       </div>
     </div>
+    <script>
+      function calculateAge(birthdate) {
+        const today = new Date();
+        const birthDate = new Date(birthdate);
+
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+
+        if (
+          monthDiff < 0 ||
+          (monthDiff === 0 && today.getDate() < birthDate.getDate())
+        ) {
+          age--;
+        }
+
+        return age;
+      }
+
+      dadAgeElement = document.getElementById("dad-age");
+      dadAgeElement.textContent = calculateAge("1974-09-13");
+
+      momAgeElement = document.getElementById("mom-age");
+      momAgeElement.textContent = calculateAge("1975-10-29");
+
+      jasonAgeElement = document.getElementById("jason-age");
+      jasonAgeElement.textContent = calculateAge("1996-04-09");
+
+      natalieAgeElement = document.getElementById("natalie-age");
+      natalieAgeElement.textContent = calculateAge("2006-12-28");
+
+      connorAgeElement = document.getElementById("connor-age");
+      connorAgeElement.textContent = calculateAge("2009-06-23");
+
+      laurenAgeElement = document.getElementById("lauren-age");
+      laurenAgeElement.textContent = calculateAge("2012-10-18");
+    </script>
   </body>
 </html>
